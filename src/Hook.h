@@ -31,7 +31,7 @@ namespace Hooks
 		{
 			auto& trampoline = SKSE::GetTrampoline();
 			BSBatchRenderer_RenderPassImmediately::func = trampoline.write_call<5>(
-				REL::RelocationID(100852, 107642).address() + REL::Relocate(0x29E, 0x28F),
+				REL::RelocationID(100852, 107642).address() + REL::Relocate(0x29E, 0x28F),   // SE 1.5.97: fn 0x141308030, call site +0x29E = 0x1413082ce
 				reinterpret_cast<uintptr_t>(BSBatchRenderer_RenderPassImmediately::thunk)
 				);
 			logs::info("hook renderpassimmediately");

@@ -74,9 +74,21 @@ namespace Settings
 		FanRadiusV         = Lookup(ini, "RayFan.FanRadiusV",           6.0f,    0.0f,  200.0f);
 		StripLingerSeconds = Lookup(ini, "Strip.StripLingerSeconds",    0.3f,    0.0f,    5.0f);
 		HitLingerSeconds   = Lookup(ini, "Strip.HitLingerSeconds",      2.0f,    0.0f,   30.0f);
+		RingRaysPerFrame   = Lookup(ini, "RayFan.RingRaysPerFrame",     2.0f,    0.0f,    8.0f);
+		MaxMarchHits       = Lookup(ini, "RayFan.MaxMarchHits",         4.0f,    1.0f,   16.0f);
+		MinCameraDistance  = Lookup(ini, "RayFan.MinCameraDistance",   48.0f,    1.0f,  500.0f);
+		PlaneSuppressMargin = Lookup(ini, "Occlusion.PlaneSuppressMargin", 512.0f, 0.0f, 4096.0f);
+		UseLegacyStrip      = Lookup(ini, "Occlusion.UseLegacyStrip",        0.0f, 0.0f,    1.0f);
+		RoomSeedMode        = Lookup(ini, "RoomSeed.Mode",                  2.0f, 0.0f,    3.0f);
+		RoomSeedDistance    = Lookup(ini, "RoomSeed.Distance",           1024.0f, 0.0f, 8192.0f);
+		DebugLog            = Lookup(ini, "Debug.Log",                      0.0f, 0.0f,    1.0f);
 
 		logs::info("settings: heightOffset={:.1f} fan=({:.1f},{:.1f}) lingers=(strip={:.2f}, hit={:.2f})",
 			PlayerHeightOffset, FanRadiusH, FanRadiusV,
 			StripLingerSeconds, HitLingerSeconds);
+		logs::info("settings: rayfan ring={:.0f}/8 per frame, maxMarch={:.0f}, minCamDist={:.1f}",
+			RingRaysPerFrame, MaxMarchHits, MinCameraDistance);
+		logs::info("settings: occlusion planeSuppressMargin={:.0f} legacyStrip={:.0f} | roomSeed mode={:.0f} dist={:.0f} | debugLog={:.0f}",
+			PlaneSuppressMargin, UseLegacyStrip, RoomSeedMode, RoomSeedDistance, DebugLog);
 	}
 }
